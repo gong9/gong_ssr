@@ -116,7 +116,7 @@ module.exports = require("react-dom/server");
 
 
 var Home = function Home() {
-  return /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", null, "react\u670D\u52A1\u7AEF\u6E32\u67D3");
+  return /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", null, "react\u670D\u52A1\u7AEF\u6E32\u67D3-\u5C0F\u767D");
 };
 
 /* harmony default export */ __webpack_exports__["a"] = (Home);
