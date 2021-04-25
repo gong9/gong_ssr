@@ -5,7 +5,7 @@ const Home = () => {
     }
     return (
         <div>
-            react服务端渲染-小白
+            ssr小轮子-小白
 
             <button onClick={() => log()}>测试</button>
 

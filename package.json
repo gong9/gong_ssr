@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node ./build/bundle.js",
-    "build": "webpack --config ./webpack.server.js"
+    "start": "nodemon ./build/bundle.js",
+    "build": "webpack --config ./webpack.server.js",
+    "watch": "webpack --config ./webpack.server.js --watch"
   },
   "author": "",
   "license": "ISC",
