@@ -1,7 +1,8 @@
 import express from 'express'
 import React from 'react';
 import { renderToString } from 'react-dom/server'
-import Home from '../conponment/Home/index.js'
+import { StaticRouter } from 'react-router-dom'
+import Route from '../route.js'
 const app = express()
 app.use(express.static('public'))
 
@@ -15,15 +16,15 @@ app.use(express.static('public'))
  * 弊端
  * - 一个消耗客户端的性一个消耗服务端的性能
  */
-app.get('/', (req, res) => {
+app.get('*', (req, res) => {
     res.send(`
         <html>
             <head>
                 <title>宫小白ssr</title>
             <head>
             <body>
-                <div id="root">${renderToString(<Home />)}</div>
-                <script src='/.js'></script>
+                <div id="root">${renderToString(<StaticRouter context={{}} location={req.path}>{Route}</StaticRouter>)}</div>
+                <script src='/index.js'></script>
             </body>
         </html>
     `)
