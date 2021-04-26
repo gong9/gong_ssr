@@ -2,6 +2,8 @@ import express from 'express'
 import React from 'react';
 import { renderToString } from 'react-dom/server'
 import { StaticRouter } from 'react-router-dom'
+import { Provider } from 'react-redux'
+import store from '../store/index'
 import Route from '../route.js'
 const app = express()
 app.use(express.static('public'))
@@ -23,7 +25,13 @@ app.get('*', (req, res) => {
                 <title>宫小白ssr</title>
             <head>
             <body>
-                <div id="root">${renderToString(<StaticRouter context={{}} location={req.path}>{Route}</StaticRouter>)}</div>
+                <div id="root">${renderToString(
+        <Provider store={store}>
+            <StaticRouter context={{}} location={req.path}>
+                {Route}
+            </StaticRouter>
+        </Provider>
+    )}</div>
                 <script src='/index.js'></script>
             </body>
         </html>
