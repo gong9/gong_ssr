@@ -1,8 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux'
+import { getHomeList } from './store/actions'
 const Home = (props) => {
+
+
     const demo = () => {
-        alert('ceshi')
+        props.getHomeList()
     }
     return (
         <div>react服务端渲染-小白{props.name}
@@ -11,6 +14,13 @@ const Home = (props) => {
     )
 }
 const mapStateToProps = state => ({
-    name: state.name
+    name: state.home.name
 })
-export default connect(mapStateToProps, null)(Home)
+const mapDispatchToProps = dispatch => (
+    {
+        getHomeList() {
+            dispatch(getHomeList())
+        }
+    }
+)
+export default connect(mapStateToProps, mapDispatchToProps)(Home)

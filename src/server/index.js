@@ -3,7 +3,7 @@ import React from 'react';
 import { renderToString } from 'react-dom/server'
 import { StaticRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
-import store from '../store/index'
+import creatstore from '../store/index'
 import Route from '../route.js'
 const app = express()
 app.use(express.static('public'))
@@ -26,7 +26,7 @@ app.get('*', (req, res) => {
             <head>
             <body>
                 <div id="root">${renderToString(
-        <Provider store={store}>
+        <Provider store={creatstore()}>
             <StaticRouter context={{}} location={req.path}>
                 {Route}
             </StaticRouter>

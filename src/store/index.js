@@ -1,7 +1,12 @@
-import { createStore, applyMiddleware } from 'redux'
+import { createStore, applyMiddleware, combineReducers } from 'redux'
 import thunk from 'redux-thunk'
-const reducer = (state = { name: 'gxb' }) => {
-    return state
+import homeReducer from '../conponment/Home/store/reducer'
+const reducer =combineReducers({
+    home:homeReducer
+})
+
+//注意createStore创建的store是单例的
+const creatstore = () => {
+    return createStore(reducer, applyMiddleware(thunk))
 }
-const store = createStore(reducer, applyMiddleware(thunk))
-export default store
+export default creatstore

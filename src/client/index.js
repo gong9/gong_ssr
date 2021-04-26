@@ -3,10 +3,10 @@ import { hydrate } from 'react-dom'
 import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import Route from '../route.js'
-import store from '../store/index'
+import creatstore from '../store/index'
 const App = () => {
     return (
-        <Provider store={store}>
+        <Provider store={creatstore()}>
             <BrowserRouter>
                 {Route}
             </BrowserRouter>
