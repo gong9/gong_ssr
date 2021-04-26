@@ -87,8 +87,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 var app = __WEBPACK_IMPORTED_MODULE_0_express___default()();
+app.use(__WEBPACK_IMPORTED_MODULE_0_express___default.a.static('public'));
+/**
+ * 传统的reactDom.render 将虚拟dom转为真实dom
+ * 这里renderToString，是将虚拟dom装换为html字符串
+ * 
+ * ssr的好处
+ * - 首屏
+ * - seo
+ * 弊端
+ * - 一个消耗客户端的性一个消耗服务端的性能
+ */
+
 app.get('/', function (req, res) {
-  res.send("".concat(Object(__WEBPACK_IMPORTED_MODULE_2_react_dom_server__["renderToString"])( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__conponment_Home_index_js__["a" /* default */], null))));
+  res.send("\n        <html>\n            <head>\n                <title>\u5BAB\u5C0F\u767Dssr</title>\n            <head>\n            <body>\n                <div id=\"root\">".concat(Object(__WEBPACK_IMPORTED_MODULE_2_react_dom_server__["renderToString"])( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__conponment_Home_index_js__["a" /* default */], null)), "</div>\n                <script src='/index.js'></script>\n            </body>\n        </html>\n    "));
 });
 app.listen(3000, function () {
   console.log("\u670D\u52A1\u5668\u57283000\u7AEF\u53E3\u6210\u529F\u542F\u52A8");
@@ -116,7 +128,15 @@ module.exports = require("react-dom/server");
 
 
 var Home = function Home() {
-  return /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", null, "react\u670D\u52A1\u7AEF\u6E32\u67D3-\u5C0F\u767D");
+  var demo = function demo() {
+    alert('ceshi');
+  };
+
+  return /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", null, "react\u670D\u52A1\u7AEF\u6E32\u67D3-\u5C0F\u767D", /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("button", {
+    onClick: function onClick() {
+      return demo();
+    }
+  }, "\u6D4B\u8BD5"));
 };
 
 /* harmony default export */ __webpack_exports__["a"] = (Home);
