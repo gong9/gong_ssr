@@ -23,7 +23,7 @@ app.get('/', (req, res) => {
             <head>
             <body>
                 <div id="root">${renderToString(<Home />)}</div>
-                <script src='/index.js'></script>
+                <script src='/.js'></script>
             </body>
         </html>
     `)
