@@ -8,13 +8,17 @@ const Home = (props) => {
         props.getHomeList()
     }
     return (
-        <div>react服务端渲染-小白{props.name}
+        <div>react-ssr小轮子-小白{props.name}
             <button onClick={() => demo()}>测试</button>
+            {props.dataList.map(item => (
+                <div key={item.id}>{item.name}</div>
+            ))}
         </div>
     )
 }
 const mapStateToProps = state => ({
-    name: state.home.name
+    name: state.home.name,
+    dataList: state.home.dataList
 })
 const mapDispatchToProps = dispatch => (
     {
